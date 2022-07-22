@@ -20,9 +20,9 @@ export default function Home({ posts }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>damarkrisnandiblog</title>
+        <title>ngeblog</title>
         <meta name="description" content="Mari ngeblog, blog" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/pixel_me_cropped.png" />
       </Head>
 
       <div>

@@ -20,7 +20,7 @@ const Header = () => {
                         <span className="flex flex-row justify-start items-center">
                             {/* <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
                             <Image 
-                            src="/pixel_me.png"
+                            src="/pixel_me_removedbg.png"
                             alt="Picture of the author"
                             width={72}
                             height={72}
