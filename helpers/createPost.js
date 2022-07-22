@@ -20,6 +20,12 @@ const postNum = parseInt(posts.map(data => data.slug).filter(data => data.starts
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+const args = process.argv;
+let filename = 'new-post';
+if (args.length >= 3) {
+    filename = args[2];
+}
+
 const data = 
 `---
 title: 'New Post'
@@ -31,5 +37,5 @@ tags: []
 <!-- fill your content here -->
 `;
 
-fs.writeFileSync(`./posts/${y}${m}${d}_${postNum}_new_post.mdx`, data);
-console.log('post created, now you can customize your post!');
+fs.writeFileSync(`./posts/${y}${m}${d}_${postNum}_${filename}.mdx`, data);
+console.log(`file ${y}${m}${d}_${postNum}_${filename}.mdx created, now you can customize your post!`);
