@@ -19,8 +19,8 @@ const NextDirection = ({ data, posts }) => {
                 transition-all duration-200 delay-75
                 hover:bg-blue-600 hover:text-white
             '>
-                <p>Post Selanjutnya:</p>  
-                <p className="text-lg font-semibold">{nextPost.data.title}</p>
+                <p className="text-xs md:text-md">Post Selanjutnya:</p>  
+                <p className="text-sm md:text-lg font-semibold">{nextPost.data.title}</p>
             </button>
         </Link>
     ) : null;
@@ -35,8 +35,8 @@ const PreviousDirection = ({ data, posts }) => {
                 transition-all duration-300 delay-100 ease-in-out
                 hover:bg-blue-600 hover:text-white
             '>
-                <p>Post Sebelumnya:</p>  
-                <p className="text-lg font-semibold">{ previousPost.data.title }</p>
+                <p className="text-xs md:text-md">Post Sebelumnya:</p>  
+                <p className="text-sm md:text-lg font-semibold">{ previousPost.data.title }</p>
             </button>
          </Link>
     ) : null;
