@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { MDXRemote } from "next-mdx-remote";
 import getPost from "../helpers/getPost";
 import getPosts from "../helpers/getPosts";
@@ -8,6 +9,12 @@ import PostsDirection from "../components/PostsDirection";
 function Post({ data, content, posts }) {
   return (
     <div>
+      <Head>
+        <title>ngeblog - {data.title}</title>
+        <meta name="description" content={data.description} />
+        <link rel="icon" href="/pixel_me_cropped.png" />
+      </Head>
+
       <h1 className="font-bold text-2xl md:text-7xl mt-24 mb-12">{data.title}</h1>
       <time className="text-gray-500 italic">{data.date}</time>
       <div className="flex flex-col md:flex-row mb-6">
