@@ -1,8 +1,50 @@
 ---
 title: 'Cara bikin blog ini?'
-description: 'Gimana sih caranya bikin blog ini? Pake react?'
+description: 'Gimana sih caranya bikin blog ini? Pake Wordpress ya?'
 date: 'July 22, 2022'
 tags: ['next', 'mdx']
 ---
 
-kaming sun
+**"Bg, Gimana cara bikin blog keren ini? pake Wordpress ya?"**
+
+Tidak dong, karena saya menggunakan **NextJS** dan **MDX** untuk membangun blognya. NextJS merupakan 
+<i>Framework</i> 
+dari **ReactJS** dengan menggunakan metode rendering SSR atau <i>Server Side Rendering</i>, dan **MDX** sendiri
+merupakan <i>Markdown Language</i> (seperti dalam penggunaan README.md) namun dapat menjalankan **JSX** didalamnya
+seperti menjalankan aplikasi **ReactJS**. Tanpa perlu banyak penjelasan, kita lanjut saja ke langkah berikutnya.
+
+Tentu saja langkah yang pertama adalah membuat next App, begini commandnya
+
+```
+npx create-next-app blog
+cd blog
+```
+
+Selanjutnya menggunakan **Tailwind CSS** untuk UI stylingnya. Selain fleksibel, format nama classnya cukup mudah dipahami <i>pattern</i>nya.
+Untuk commandnya bisa diikuti langkah berikut ini
+
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+Setelah konfigurasi sukses, dapat dilanjutkan dengan masuk ke file `tailwind.config.js`.
+konfigurasi <i>path</i> di bagian `content` menjadi seperti dibawah
+
+```javascript
+content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+],
+```
+
+Setelah itu tambahkan <i>directive</i> `@tailwind` ke dalam file `global.css` seperti berikut ini
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Jalankan proses <i>build</i> dengan `npm run dev`. Jika langkah-langkah diatas diikuti dengan benar, 
+maka <i>class-class</i> yang disediakan oleh **Tailwind CSS** akan berjalan dengan sempurna.
+
+--belum kelar bang--

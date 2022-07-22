@@ -21,7 +21,7 @@ function Post({ data, content, posts }) {
 
       <h1 className="font-bold text-4xl md:text-7xl mt-24 mb-12">{ title }</h1>
       <time className="text-gray-500 italic">{ date }</time>
-      <div className="text-xs">Tag: <p className='text-semibold'>{tags.join(', ')}</p></div>
+      <div className="text-xs flex">Tag: &nbsp; <p className='text-semibold'>{tags.join(', ')}</p></div>
       <div className="flex flex-col md:flex-row mb-6">
         <div className="prose mt-12 md:mr-72 basis-3/4">
           <MDXRemote {...content} />
