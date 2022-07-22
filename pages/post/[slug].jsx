@@ -1,29 +1,34 @@
 import Head from 'next/head'
 import { MDXRemote } from "next-mdx-remote";
-import getPost from "../helpers/getPost";
-import getPosts from "../helpers/getPosts";
+import getPost from "../../helpers/getPost";
+import getPosts from "../../helpers/getPosts";
 import { serialize } from "next-mdx-remote/serialize";
-import OtherPostCard from "../components/OtherPostCard";
-import PostsDirection from "../components/PostsDirection";
+import OtherPostCard from "../../components/OtherPostCard";
+import PostsDirection from "../../components/PostsDirection";
+import { useRouter } from 'next/router'
 
 function Post({ data, content, posts }) {
+  const router = useRouter()
+  const { slug } = router.query
+  const { title, description, date, tags } = data;
   return (
     <div>
       <Head>
-        <title>ngeblog - {data.title}</title>
-        <meta name="description" content={data.description} />
+        <title>ngeblog - { title }</title>
+        <meta name="description" content={ description } />
         <link rel="icon" href="/pixel_me_cropped.png" />
       </Head>
 
-      <h1 className="font-bold text-2xl md:text-7xl mt-24 mb-12">{data.title}</h1>
-      <time className="text-gray-500 italic">{data.date}</time>
+      <h1 className="font-bold text-4xl md:text-7xl mt-24 mb-12">{ title }</h1>
+      <time className="text-gray-500 italic">{ date }</time>
+      <div className="text-xs">Tag: <p className='text-semibold'>{tags.join(', ')}</p></div>
       <div className="flex flex-col md:flex-row mb-6">
         <div className="prose mt-12 md:mr-72 basis-3/4">
           <MDXRemote {...content} />
         </div>
         <div className="basis-1/4 mt-20 md:mt-0">
           <h1 className="text-md md:text-xl font-semibold">Postingan lainnya...</h1>
-          {posts.slice(0,2).map((post) => (
+          {posts.filter(post => post.slug !== slug).slice(0,3).map((post) => (
             // eslint-disable-next-line react/jsx-no-undef
             <OtherPostCard
               key={post.slug}

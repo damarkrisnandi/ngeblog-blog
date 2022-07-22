@@ -17,8 +17,9 @@ export const getStaticProps = () => {
 };
 
 export default function Home({ posts }) {
+  console.log(posts);
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>ngeblog</title>
         <meta name="description" content="Mari ngeblog, blog" />
@@ -26,7 +27,7 @@ export default function Home({ posts }) {
       </Head>
 
       <div>
-      <h1 className="mt-24 mb-12 font-bold text-3xl">Latest Posts</h1>
+      <h1 className="mt-24 mb-12 font-bold text-4xl md:text-7xl">Lastest Post</h1>
       {posts.map((post) => (
         // eslint-disable-next-line react/jsx-no-undef
         <PostCard
