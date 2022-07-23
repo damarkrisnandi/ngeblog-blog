@@ -11,7 +11,7 @@ const Header = () => {
     return ( 
         <Fragment >
             <div className="text-black text-lg font-semibold flex flex-row justify-start items-center h-20 py-7">
-                <Link href="/">
+                <Link href="/1">
                     <button className=" border-b-2 
                     transform transition duration-300 delay-100 ease-in-out 
                     hover:text-blue-600 border-b-blue-600"> 

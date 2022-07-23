@@ -11,8 +11,11 @@ const PostsDirection = ({ data, posts }) => {
 }
 
 const NextDirection = ({ data, posts }) => {
+    if (posts.length <= 1) {
+        return null;
+    }
     const index = posts.findIndex(d => d.data.title === data.title);
-    const nextPost = posts[posts.findIndex(d => d.data.title === data.title) - 1];
+    const nextPost = posts[index - 1];
     return index > 0 && index <= posts.length - 1 ? (
         <Link href="/post/[slug]" as={`/post/${nextPost.slug}`}>
             <button className='flex flex-col justify-center item-start p-5 border-2 rounded-lg 
@@ -27,6 +30,9 @@ const NextDirection = ({ data, posts }) => {
 }
 
 const PreviousDirection = ({ data, posts }) => {
+    if (posts.length <= 1) {
+        return null;
+    }
     const index = posts.findIndex(d => d.data.title === data.title);
     const previousPost = posts[posts.findIndex(d => d.data.title === data.title) + 1];
     return index >= 0 && index < posts.length - 1 ? (
