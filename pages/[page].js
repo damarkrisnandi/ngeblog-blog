@@ -9,11 +9,9 @@ import PagesDirection from '../components/PagesDirection';
 
 
 export const getStaticProps = ({params}) => {
-    console.log(params);
-    const pageSize = 3;
+    const pageSize = 5;
     const posts = getPosts()
     const { page } = params;
-    console.log(pageSize * (parseInt(page) - 1), (pageSize * parseInt(page)));
     const slicedPosts = posts.slice(pageSize * (parseInt(page) - 1), (pageSize * parseInt(page)));
     return {
         props: {
@@ -26,7 +24,7 @@ export const getStaticProps = ({params}) => {
 };
 
 export const getStaticPaths = async () => {
-    const pageSize = 3;
+    const pageSize = 5;
     const posts = await getPosts();
     const allPages = Array.from({length: Math.ceil(posts.length / 3)}, (_, i) => i + 1);
     const paths = allPages.map((page) => ({ params: { page: page.toString() } }));
