@@ -10,7 +10,7 @@ const myLoader=({src, width, height})=>{
 const Header = () => {
     return ( 
         <Fragment >
-            <div className="text-black text-lg font-semibold flex flex-row justify-start items-center h-20 py-7">
+            <div className="text-black text-lg font-semibold flex flex-row justify-start items-center h-20 py-7 pb-1 container mx-auto max-w-5xl px-4">
                 <Link href="/1">
                     <button className=" border-b-2 
                     transform transition duration-300 delay-100 ease-in-out 

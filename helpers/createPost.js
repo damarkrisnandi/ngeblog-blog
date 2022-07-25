@@ -16,7 +16,11 @@ const m = padding(date.getMonth() + 1);
 const y = padding(date.getFullYear());
 
 const posts = getPosts();
-const postNum = parseInt(posts.map(data => data.slug).filter(data => data.startsWith(`${y}${m}${d}`))[0].split('_')[1]) + 1;
+const currentPrevPosts = posts.map(data => data.slug).filter(data => data.startsWith(`${y}${m}${d}`));
+let postNum = 1;
+if (currentPrevPosts.length > 0) {
+    postNum = parseInt(posts.map(data => data.slug).filter(data => data.startsWith(`${y}${m}${d}`))[0].split('_')[1]) + 1;
+}
 
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 

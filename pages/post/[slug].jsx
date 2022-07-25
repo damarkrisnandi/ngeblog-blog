@@ -7,6 +7,9 @@ import OtherPostCard from "../../components/OtherPostCard";
 import PostsDirection from "../../components/PostsDirection";
 import { useRouter } from 'next/router'
 
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 function Post({ data, content, posts }) {
   const router = useRouter()
   const { slug } = router.query
@@ -17,6 +20,7 @@ function Post({ data, content, posts }) {
         <title>ngeblog - { title }</title>
         <meta name="description" content={ description } />
         <link rel="icon" href="/pixel_me_cropped.png" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossOrigin="anonymous" />
       </Head>
 
       <h1 className="font-bold text-4xl md:text-7xl mt-24 mb-12">{ title }</h1>
@@ -59,7 +63,15 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const post = await getPost(params.slug);
-  const mdxSource = await serialize(post.content);
+  const mdxSource = await serialize(post.content, {
+    // MDX's available options, see the MDX docs for more info.
+    // https://mdxjs.com/packages/mdx/#compilefile-options
+    mdxOptions: {
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex],
+      format: 'mdx'
+    },
+  });
   const posts = getPosts();
   return {
     props: {
