@@ -1,10 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import getPosts from '../helpers/getPosts';
 
 import PostCard from '../components/PostCard';
-import Link from 'next/link'
 import PagesDirection from '../components/PagesDirection';
 
 
@@ -44,7 +41,7 @@ export default function Home({ posts, page, pages, pageSize }) {
       </Head>
 
       <div>
-      <h1 className="mt-24 mb-12 font-bold text-4xl md:text-7xl">Lastest Post</h1>
+      <h1 className="mt-24 mb-12 font-bold text-4xl md:text-7xl z-50">Lastest Post</h1>
       {posts.map((post) => (
         // eslint-disable-next-line react/jsx-no-undef
         <PostCard
@@ -56,7 +53,6 @@ export default function Home({ posts, page, pages, pageSize }) {
         />
       ))}
       <PagesDirection page={page} pages={pages} />
-      
     </div>
     </div>
   )

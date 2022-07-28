@@ -27,10 +27,10 @@ function Post({ data, content, posts }) {
       <time className="text-gray-500 italic">{ date }</time>
       <div className="text-xs flex">Tag: &nbsp; <p className='text-semibold'>{tags.join(', ')}</p></div>
       <div className="flex flex-col md:flex-row mb-6">
-        <div className="prose mt-12 md:mr-72 basis-3/4">
+        <div className="prose mt-12 max-w-full">
           <MDXRemote {...content} />
         </div>
-        <div className="basis-1/4 mt-20 md:mt-0">
+        {/* <div className="basis-1/6 mt-20 md:mt-0 ml-2">
           <h1 className="text-md md:text-xl font-semibold">Postingan lainnya...</h1>
           {posts.filter(post => post.slug !== slug).slice(0,3).map((post) => (
             // eslint-disable-next-line react/jsx-no-undef
@@ -42,7 +42,7 @@ function Post({ data, content, posts }) {
               slug={post.slug}
             />
           ))}
-        </div>
+        </div> */}
       </div>
       <PostsDirection data={data} posts={posts}/>
       
